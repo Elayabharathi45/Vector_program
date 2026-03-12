@@ -1,0 +1,438 @@
+1- Diff b/w C & Embedded C
+		    C
+	- used for software program
+	- declarations are allowed anywhere in program
+	- for output & input operations we use scanf, printf etc
+	- programmer can access only virtual addresses(address used by programs for access memory)
+		Embedded C
+	- used for firmware program
+	- declarations are not allowed inside program block, only at beginning
+	- C functions are supported, but for ip/op operations we use I/O ports
+	- Emb-C programmer can access physical address(Address used in main memory(RAM))
+
+2- Categories of Embedded System
+	- Standalone  				e.g., digital watches, calculators
+	- Network Based				e.g., IoT devices, smart home systems
+	- Real Time Operating System (RTOS)	e.g., video streaming, robots, medical devices
+	- Mobile Embedded system - smartphones, tablets, and wearable technology
+	- Large scale application - industrial automation, automotive electronics and aerospace systems
+
+3- what is firmware programming 
+	application to hardware
+
+4- ARM7 points
+	- 32bit data bus, 32bit address bus, 32bit ALU
+	- 32bit address --->4GB memory
+	- It is RISC & Von-Newmann 
+	- LPC2129 -----> 16KB RAM & 256KB ROM
+    STM32 points
+	- 32-bit address bus----->4GB memory
+	- STM32 MCUs are based on ARM Cortex-M cores like M0, M3, M4 or M7.
+	- Harvard architecture - separate instruction and data buses
+	- Flash Memory base address: 0x08000000
+	- SRAM typically base address 0x20000000
+	- peripherals are memory-mapped from 0x40000000 onwards
+
+5- System Clock
+	- system clock generates periodic pulses used to synchronize all operations (Instructions & data) within the controller
+	- It's a fundamental signal that synchronizes the internal operations of the processor, dictating the speed at which instructions are executed
+	- To generate constant frequency for CPU and on-chip peripherals
+
+6- what is an IDE (Integrated Development Environment)
+	An IDE is software for building applications that combines common developer tools into a single GUI
+
+7- what is an interrupt
+	It is an event or signal which request the CPU to execute special code with high polarity
+	Interrupt is an unexpected event from outside the process. 
+	Whenever an exception or interrupt occurs, the hardware starts executing the code that performs an action in response to the exception.
+	Interrupts in microcontrollers are triggered by peripherals like timers, UARTs or GPIO pins to signal the CPU.
+
+8- Hardware interrupt 
+	A hardware interrupt is triggered by an external hardware device to get the CPU’s attention (like button press or data received)
+	1. GPIO pin input (button press)
+	2. Timer overflow
+	3. UART data received
+	4. ADC conversion complete
+	5. External sensors (motion, temperature)
+
+   Software interrupt
+	A software interrupt is triggered by a program instruction (Force an Interrupt from Code), not hardware. 
+	It’s used to request services from the OS or BIOS, or to switch tasks in an RTOS.
+
+	__asm("SVC #0");  // Software interrupt using Supervisor Call
+	void SVC_Handler(void) {
+	    // Handle the software interrupt (e.g., OS service call)
+	}
+
+9- Interrupts are triggered by
+	1. Hardware Interrupts
+		Timer Overflow: 
+			When a timer reaches its maximum value, it triggers an ISR.
+		UART Communication:
+			Receive ISR: Called when a byte is received.
+			Transmit ISR: Called when ready to send the next byte.
+		External Pin Change (GPIO):
+			Triggered when a digital input changes state, like a button press.
+		ADC Completion: 
+			When analog-to-digital conversion finishes.
+		PWM Events: 
+			For control applications like motor speed.
+	2. Software Interrupts
+		System Calls: Some OS-level functions invoke ISRs to switch context.		
+		Manual Triggering (in some microcontrollers): Software can force an interrupt via specific registers.
+	3. Exceptions (on certain architectures)
+		Divide by Zero, Illegal instruction, Memory access fault — These are fault-type interrupts that invoke predefined ISRs.
+	4. Peripheral Events
+		SPI, I2C Communication Completion
+		DMA Transfer Complete
+		Watchdog Timeout
+
+10- what is exception
+	An exception is any condition that stops the sequential execution of the program
+	It involves temporarily suspending normal program execution and transferring control to a dedicated handler routine when an exceptional event occurs
+	An exception is an unexpected event from within the processor.
+	Exceptions are CPU-generated events like
+		1. Reset
+		2. Non-Maskable interrupt - Used for critical events (watchdog timeout, brownout detection).
+		3. hard faults (Invalid memory access, Bus error, Division by zero, Corrupt vector table)
+		4. SVC (Supervisor Call) - Software-triggered interrupt using SVC instruction.
+
+11- Von Neumann  
+	- Same physical memory address is used for instructions(address) and data.	
+	- There is common bus for data and instruction transfer.
+	- Two clock cycles are required to execute single instruction.
+	- 8086, ARM7, Intel, AMD
+    Harvard 
+	- Separate physical memory address is used for instructions and data.	
+	- Separate buses are used for transferring data and instruction.
+	- An instruction is executed in a single cycle.
+	- 8051, ARM9, STM32
+
+12- Registers
+	- Registers in microcontrollers are small storage locations within the processor that execute instructions efficiently.
+	- They play a crucial role in data processing, memory access, and control operations
+		1. General purpose Register - Used for temporary data storage during computations
+		2. Special Purpose Register - Used to access on-chip peripherals
+			1. Control Register - Manage configuration and setting for processor and peripheral
+			2. Status Register  - Store condition flags that indicate results of operations (zero & carry flag)
+			3. Stack Pointer    - points to top of stack in memory, which is used for temporary storage during function calls, interrupts and other operations
+			4. Program Counter  - used to store the address of the next instruction to be executed
+			5. Interrupt Register - Store information related to interrupt handling
+		3. I/O register  - Control input/output operations with external devices like sensors, displays and communication ports
+		4. Memory Address Register  - Store addresses for fetching instructions or data from RAM
+
+    Why Are Registers Important?
+	- Enable low-level control of hardware.
+	- Direct interface between software and hardware.
+	- Efficient and fast – access is immediate (no memory delay).
+	- Crucial for setting up timers, ADCs, communication protocols, etc.
+
+13- Prescaler 
+	- It is a circuit that  divides the input clock frequency to allow the timer to operate at slower intervals, enabling longer delays or lower frequency operations
+	uses for:
+		1. Extend Timer Ranges
+			Microcontrollers often use high-frequency system clocks (e.g., 16 MHz).
+			Directly using such fast clocks would cause timers to overflow too quickly.				
+			A prescaler slows the ticking, letting you measure longer intervals.	
+		2. Control PWM Frequency
+			Adjusting the prescaler lets you fine-tune your PWM signal without changing the system clock.
+		3. Enable Accurate ADC Timing
+			Some ADCs require slower sampling rates for accuracy—prescalers ensure that.
+		4. Watchdog Configuration
+			For watchdog timers, the prescaler decides how long the system can go without refreshing before a reset happens.
+14- Timers
+	- A timer is a hardware module in a microcontroller that increments a register value based on a clock source.
+	- In timer fun, count registers are incremented by 1 for every machine cycle
+	- When the register reaches a predefined value, it can trigger an interrupt or reset itself
+	Purpose: Measure time intervals and generate periodic events.
+	Operation: Uses the system clock to increment a register at a fixed rate.
+	- 8bit --> 255times & 16bit timers --> 65535times
+	Uses in Embedded Systems:
+		- Generating delays for precise timing.
+		- Periodic task execution (e.g., sensor sampling in HVAC systems).
+		- Pulse Width Modulation (PWM) for motor control.
+		- Real-time clock functionality.
+
+15- Counters
+	- Counters in microcontrollers are specialized registers or hardware modules used to count events, pulses or time intervals.
+	- In counter fun, count registers are incremented by 1 for every high to low transitions on counter input pins
+	- They are essential for tasks like timing control, event tracking and frequency measurement.
+	Purpose: Count external events or pulses.
+	Operation: Increments based on input signals (not necessarily clock-driven).
+	Uses in Embedded Systems:
+		- Counting external triggers (e.g., button presses, fan rotation speed).
+		- Frequency measurement of signals.
+		- Event tracking in automation systems.
+
+16- Difference bt Timers and Counters
+	A timer counts internal clock pulses to measure time intervals.
+	Timers used for Time delays, PWM, timeouts in RTOS	
+	A counter counts external events or pulses (from a sensor, encoder, etc.).
+	counters used for Counting events, rotations, edges
+	
+17- FIQ(Fast Interrupt Request) & IRQ(Interrupt Request)
+	FIQ and IRQ are two hardware interrupt types in ARM architecture. 
+	IRQ is for general-purpose interrupts
+		1.UART receive complete
+		2.Timer tick (non-critical)
+		3.ADC conversion complete
+	FIQ is reserved for time-critical tasks due to its higher priority and faster handling using dedicated registers.
+		1.Emergency brake in a robot
+		2.High-speed data acquisition
+		3.Real-time encoder pulse count
+
+18- Volatile in Embedded 
+	It is used to prevent compiler from optimizing accesses to a variable that can change unexpectedly — like in ISRs, hardware registers or multi-threaded code. 
+	Without it, the compiler might skip re-reading a variable if it thinks its value won’t change — leading to bugs in embedded systems.
+	Its value may change at any time without the program explicitly modifying it."
+	In embedded systems, variables can be changed by:
+		1.Interrupt Service Routines (ISRs)
+		2.Hardware registers
+			1. Polling a hardware register:
+				while (flag == 0);  // waiting for hardware to set flag
+				If flag isn't volatile, compiler may assume it's always 0 and optimize the loop into an infinite one.
+		3.Other threads/tasks (in RTOS)
+	If you don’t use volatile, the compiler might optimize away repeated reads, assuming the value hasn’t changed — which causes incorrect behavior.
+
+19- Polling 
+	Polling is a technique where the CPU continuously checks (polls) a peripheral or flag to see if an event has occurred.
+		while (1) {
+    			if (button_pressed == 1) {
+        		handle_button();
+		    }
+		}
+     Interrupt 	
+	It allows a peripheral or external event to pause the main program and automatically call a specific function (ISR: Interrupt Service Routine).
+		void ISR_ButtonPressed(void) {
+    			handle_button();
+		}
+
+20- modes of operation 
+	1) Supervisor mode
+	2) System mode
+	3) User mode
+	4) FIQ
+	5) IRQ
+	6) Undefined mode
+	7) Abort mode
+
+21- Exception pre-defined memory
+	- Reset			 - 0x00
+	- undefined instruction	 - 0x04
+	- software interrupt 	 - 0x08
+	- prefetch abort	 - 0x0c
+	- Data abort		 - 0x10	
+	- Reserved		 - 0x14
+	- IRQ			 - 0x18
+	- FIQ			 - 0x1c
+    Exception priority   (total 32 interrupts)
+	- Reset, data abort, FIQ, IRQ, Prefetch abort, Undefined Instruction, Software Interrupt
+
+22- Embedded peripherals include:
+	1. Timers & Counters: Used for time tracking, event counting, and generating precise delays.
+	2. GPIO (General-Purpose Input/Output): Allows communication with external devices like sensors, LEDs, and buttons.
+	3. USART/UART (Serial Communication): Enables data exchange between embedded devices over serial protocols.
+	4. I2C & SPI: Protocols for communicating with peripherals like EEPROMs, sensors, and displays.
+	5. ADC/DAC (Analog-to-Digital / Digital-to-Analog Converters): Converts analog signals to digital values and vice versa.
+	6. PWM (Pulse Width Modulation): Used for motor control, LED brightness adjustment, and signal generation.
+	7. CAN & Ethernet: Communication interfaces for networking applications in automotive and industrial systems.
+
+23- Types of Communication protocols
+	1. Network Communication Protocols
+		TCP/IP (Transmission Control Protocol/Internet Protocol): The foundation of internet communication.
+		UDP (User Datagram Protocol): Faster, connectionless communication, often used in streaming.
+		HTTP/HTTPS (Hypertext Transfer Protocol/Secure): Web communication protocols.
+		FTP (File Transfer Protocol): Used for transferring files over a network.
+		SSH (Secure Shell Protocol): Secure remote access to networked devices.
+	2. Wireless Communication Protocols
+		Wi-Fi (IEEE 802.11): Standard for wireless internet connectivity.
+		Bluetooth: Short-range wireless communication.
+		Zigbee: Used in IoT applications for low-power communication.
+		LoRa (Long Range): Low-power wide-area network (LPWAN) for IoT.
+		NFC (Near Field Communication): Contactless short-range communication.
+	3. Serial Communication Protocols
+		UART (Universal Asynchronous Receiver-Transmitter): Simple serial data transfer.
+		SPI (Serial Peripheral Interface): High-speed communication for embedded systems.
+		I2C (Inter-Integrated Circuit): Used for short-range communication between chips.
+		RS-232/RS-485: Standard serial communication in industrial applications.
+	4. Industrial Communication Protocols
+		Modbus: Widely used in automation and control systems.
+		CAN (Controller Area Network): Used in automotive and embedded systems.
+		PROFINET: Ethernet-based communication for industrial automation.
+		Ether CAT: High-performance industrial protocol.
+		BACnet: Used in building automation (HVAC, lighting).
+	5. IoT & Embedded Systems Communication Protocols
+		MQTT (Message Queuing Telemetry Transport): Lightweight protocol for IoT messaging.
+		CoAP (Constrained Application Protocol): Optimized for resource-constrained devices.
+		OPC-UA (Open Platform Communications Unified Architecture): Used in industrial IoT.
+		DDS (Data Distribution Service): Real-time communication in embedded systems.
+
+
+UART - Asynchronous 
+1. Modes of Serial Communication
+	1. Simplex 	- one way communication
+	2. Half Duplex	- two way communication but only one at a time
+ 	3. Full Duplex	- two way communication simultaneously 
+
+2. Clock signals 
+	- Synchronization	Ensures transmitter and receiver operate at the same frequency
+	- Timing Control	Defines precise moments for sampling/transmitting data
+	- Data Rate Regulation	Controls the baud rate of communication
+	- Bit Framing		Indicates the start and end of each bit
+	- Data Integrity	Minimizes data corruption by providing a reliable timing reference
+
+3. 		Feature			Synchronous Serial Communication			Asynchronous Serial Communication
+	Clock Signal		Shared clock signal					No shared clock, uses start/stop bits
+	Timing			Synchronized by clock					Relies on individual bit timing
+	Data Framing		Continuous streams, no start/stop bits			Start and stop bits for each data packet
+	Speed			Generally faster					Generally slower
+	Examples		SPI, I2C						RS232, UART, CAN
+	Applications		High-speed data transfer, precise sync			Simple communication, peripherals	
+
+4. UART
+	- UART is a hardware module inside a microcontroller or processor that handles asynchronous serial communication
+	- A UART typically operates at TTL voltage levels (0V and 5V for logic low/high)
+	- It is a type of serial communication protocol used for transmitting and receiving data between devices.
+	- It works by sending data one bit at a time, in a continuous stream, without requiring a clock signal.
+	- UART uses two wires: one for transmitting data (TX) and one for receiving data (RX)
+	- It can be either Half or Full duplex
+	- Baud rate 9600 or 115200 bits per sec 
+
+5. Formula
+	Baud Rate = System Clock / (Prescaler * (16)Oversampling Rate)
+	Prescaler = System Clock / (Baud rate * (16)Oversampling Rate)
+
+	system clock	This is the frequency of the clock signal used by the UART module.
+	Prescaler  	This is a divisor value that reduces the system clock frequency to a suitable range for the UART.
+	Oversampling Rate: This determines how many times the UART samples the incoming bit stream to determine if it's a '1' or a '0'.
+
+	If your system clock is 7.3728 MHz and you want a baud rate of 9600 with a 16x oversampling rate
+	
+6. Baud Rate Synchronization:
+	- Instead of a shared clock, UART devices agree on a baud rate, which defines how fast data bits are transmitted.
+	- Common baud rates include 9600, 115200, etc. 
+	- Both sender and receiver must operate at the same baud rate to avoid errors.
+
+7. Buffer
+	- A buffer is a temporary storage area used in UART communication to hold data that is being transmitted or received 
+	- A software buffer is implemented in software and stores the data in memory 
+	- A hardware buffer is implemented in the UART's hardware and stores the data in a dedicated memory location
+
+8. types of error
+	1. framing errors
+		Framing errors occur when the UART receiver fails to detect the start and stop bits of a frame
+	2. parity errors
+		Parity errors occur when the parity bit does not match the expected value
+	3. overrun errors 
+		Overrun errors occur when the UART receiver is unable to process incoming data fast enough, resulting in data loss
+	- These errors can be detected using error-checking protocols, such as parity checking or CRC.
+	- In some cases, errors can be corrected by re-transmitting the data.
+
+9. Direct Memory Access (DMA)
+	- it is a technique for transferring data between devices without involving the CPU  
+	- DMA can be used in UART communication to transfer data between the UART buffer and memory, without using CPU resources
+	- This can improve performance and reduce the load on the CPU
+
+10. RS232 - Recommended Standard-232
+	- RS-232 is a communication standard that defines voltage levels, connector types and protocols for serial data transfer
+	- RS-232 uses higher voltage levels (±25V) to improve signal integrity over longer distances
+	- speed standard speed is 20 kbps
+		extended up to 115 kbps
+
+11. Baud rate
+	- total no. of signal units transmitted in one second
+    Bit rate
+	- total no. of bits transmitted in one unit time
+
+I2C - Synchronous 
+1. I2C points
+	- It enables efficient data transfer between microcontrollers and peripheral devices by utilizing a shared bus.
+	- With I2C, multiple devices can be connected to same bus, allowing for easy expansion and integration.
+	- The protocol uses two lines, SDA (Serial Data) and SCL (Serial Clock), to transmit and receive data.
+	- I2C is known for its simplicity, low pin usage, and support for low-power devices.
+	- It finds applications in various fields, including sensor interfaces, memory modules, real-time clocks, and more.
+	- Data transfers or receive MSB first and it is Half duplex
+	- Supports 7bit & 10bit addressing mode
+
+2. I2C clock stretching
+	- It is a mechanism that allows an I2C slave device to slow down communication when it needs more time to process data.
+	- Normally, master device controls the clock speed, but if slave is unable to keep up, it can hold the SCL (serial clock) line low, effectively pausing the communication until it's ready to continue
+
+3. Pullup resistor in I2C
+	- Used to limit the bus speed
+	- To match Voltage level of master and slave it is used
+
+4. Slave Connection
+	- Theoretically Connect up to 128 for 7bit mode & 1024 for 10bit mode
+	- But practical Max no. of slaves on I2C is limited by address space and also by bus capacitance
+
+5. Speed
+	- standard speed up to 100kbps
+	- ultra speed 5Mbps 
+
+6. I2C Master & I2C Slave
+	- An I2C master is a device that initiates communication on the bus and controls the timing of data transfer.
+	- A slave device responds to commands or requests from the master device and sends data back to the master device.
+	- Some devices, such as microcontrollers, can operate as both a master and a slave on an I2C bus.
+
+7. I2C bus arbitration
+	- It's a mechanism that ensures only one master device controls the shared bus at a time, preventing data corruption when multiple masters attempt to communicate simultaneously
+
+
+SPI - Synchronous 
+1. SPI points 
+	- It supports 4 wires
+	- Supports Full duplex communication 
+	- Speed up to 10Mbps
+	- It supports both LSB or MSB
+	- used for data exchange between microcontrollers and peripherals like sensors, displays, and memory devices
+	- There are 4 modes differentiated by 2 parameters Clock polarity & Clock Phase
+
+2. PIN configuration
+	1. MOSI (Master Out Slave In) – Sends data from the master to the slave.
+	2. MISO (Master In Slave Out) – Receives data from the slave to the master.
+	3. SCLK (Serial Clock) – Generated by the master to synchronize data transfer.
+	4. SS (Slave Select) – Used to select which slave device to communicate with (active low). 
+
+3. Sampling Edge
+	- On raising edge of clock the data is valid
+   Transmit Edge
+	- ON falling edge of clock the bit is shifted or allowed to change
+
+4. Slave Connection
+	- No. of slaves connect to single master is limited by no. of chip select lines available on master device
+	- Standard SPI protocol allows up to 4 slave devices to be connected to single master device 
+
+5. Shift Registers
+	In SPI, shift registers used to transfer data to slave using MOSI bus and at same time receiving dummy data from MISO bus
+
+6. Clock phase & Clock polarity
+	- The polarity and phase of the clock signal in SPI communication defines timing relationship between clock signal and data signals. 
+	- The polarity determines whether clock signal is high or low when it is idle
+	- The phase determines whether data is sampled on rising edge or falling edge of clock signal.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

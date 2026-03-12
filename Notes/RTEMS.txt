@@ -1,0 +1,31 @@
+RTEMS (Real Time Executive for Multiprocessor System)
+- It is open source OS for embedded system
+- It supports wide range of processor and controller hardware platforms 
+- It is used in variety of applications including aerospace, defence, medical, telecommunication and industrial automation
+
+RTEMS supports wide range of processor architecture, including 
+- ARM cortex-M
+- MIPS 32
+- PowerPC 440
+- x86
+- SPARC V8
+
+Features of RTEMS
+- It supports both preemptive & cooperative multitasking that run concurrently in a predictable manner.
+- It provides real-time scheduling algorithms such as priority-based scheduling, round-robin scheduling and Earliest deadline first(EDF) scheduling.
+- It includes mechanism for inter-process communication such as message queues, semaphores and remote procedure calls(RPC).
+- It supports variety of file system, networking protocols and device drivers, making it suitable for wide range of embedded systems and real-time applications. 
+- It support both single-processor and multi processor systems
+- It support both symmetric multiprocessing(SMP) and asymmetric multiprocessing(AMP) architecture
+- SMP systems have multiple identical processors that share single memory space 
+- AMP systems have multiple processor that each have their own memory space
+
+Use cases and Application
+- In aerospace and defence, RTEMS used in systems such as unmanned aerial vehicles(UAVs), satellite control systems and avionics
+- In automotive, RTEMS is used in ECUs for engine management, breaking and steering
+- In telecommunication, RTEMS is used in systems such as network switches and routers
+
+Advantages
+- It is open source OS that offers several advantages for embedded and real-time systems development
+- It is portable, with support for wide range of hardware platforms and architectures
+- It is mature and stable platform, make choice for mission-critical systems that require high levels of reliability and safety.

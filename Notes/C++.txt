@@ -1,0 +1,296 @@
+1) Features of C++
+	- Simple And User Friendly
+	- Object Oriented Programming
+	- Platform Dependent
+	- Structured Programming Language
+	- Mid-Level Programming Language
+	- Rich Library
+	- Case-Sensitive
+
+2) - <iostream> ---> input/output stream
+	- Streams are part of Standard Library and are implemented in the <iostream> and <fstream> headers
+   - C++ deals input & output operations with streams/objects
+   - cout <<, here << is called insertion operator
+   - cin >>, here >> is called extraction operator
+
+3) Numerical format flags : dec, oct, hex
+	- cout << dec ---> cout is converted into decimal format
+	- cout << oct ---> cout is converted into octal format
+	- cout << hex ---> cout is converted into hexa decimal format
+
+4) scope resolution operator(::) 
+	- it is an operator, which is used to access global version of data.
+	- You can use :: to define class member functions outside the class declaration
+	- When multiple namespaces contain identical names, :: helps to differentiate
+	- It allows access to static members without an object instance
+
+5) reference variable
+	- It is an alias name for existing variable
+	- It allows you to use another name for the same memory location without creating a copy
+	Synax : Datatype & ref_var   =   exist_var;
+                            or
+                         alias_var
+	1. saves memory
+	2. faster in execution
+
+6) 1.Encapsulation 
+	It is a mechanism that binds together code and data into single unit called class, and keeps both safe from outside interference 
+	Access specifiers (public, private, protected) manage the visibility of class members.
+   2.Data Abstraction
+	It refers to representing display of essential features and hiding the background details
+		1. Data Abstraction
+		2. Control Abstraction
+   3.Polymorphism
+	 A function or object that can exist to perform in different forms
+	 Similar function name like...
+ 		i) Compile time Polymorphism
+    			1) Function Overloading
+    			2) Operator Overloading
+		ii) Runtime Polymorphism
+      			1)Virtual functions
+   4. Inheritance 
+	It is a process of acquiring the properties of one class into another class (properties from parent to child)
+
+7) Namespace
+	- It is a directive that allows you to use all standard library components without explicitly qualifying them with std::
+	- It is a declarative region used to localize global identifier names to avoid name collisions
+	- A namespace creates a memory in which various program elements can be placed
+	- Elements can be variables, functions, classes and templates
+	- In C++ standard library, where all classes, functions and templates are declared in the namespace std;
+
+8) Ambiguity error     
+	- compiler cannot determine which function, variable, or class member to use due to multiple possibilities with the same name
+	- This typically happens due to multiple inheritance, overloaded functions, or namespace conflicts
+		1. When two base classes have the same member function, the derived class inherits both, causing ambiguity
+		2. When two overloaded functions have parameters that lead to causing ambiguity
+		3. If multiple namespaces define the same name, ambiguity occurs
+
+9) default argument 
+	- It is a function parameter that has default value provided to it for some or all formal arguments
+	- If user doesn't supply a value for this parameter, the default value will be used
+	- If user supply a value for the default parameter, the user supplied value is used
+
+10) inline function
+	- It is a function where the compiler replaces the function call with the actual code of function body at compile time
+	- whenever C++ compiler comes across inline function call, it substitutes entire code of function definition
+    in place of function call
+	To check compiler, inline function is working or not
+		C++ -O2 -save-temps filename.cpp      O2- optimization level
+
+11) Function overloading
+	- Defining multiple functions with same name is called function overloading
+	- These functions must differ in their number, order or types of arguments
+
+12) Name mangling (Name decoration)
+	It is a mechanism used by compiler to create unique names for functions, variables and objects, especially when dealing with function overloading, namespaces and classes
+	- You can inspect name mangling using the nm or c++filt tool in Linux 
+
+13) what is Class
+	It is a basic building block of object oriented programming
+
+14) what is object
+	An instance of a class (variable of  a class)
+
+15) what is friend 
+	 It is non-member function of class, Which is used to access private members a structure or class.
+
+16) what is this pointer 
+	- It points to current object that invoked the member function.
+	- Whenever member function is called, this pointer is automatically passed to called member function as an implicit inbuilt argument
+	- It holds the address of the calling object. 
+	- Used to differentiate between local and instance variables when they have the same name. 	
+	- Cannot be modified—it is a constant pointer. 
+	- Available only in non-static member functions, as static functions don’t belong to any particular object
+
+17) what is constructor
+	It is a special member function of class which is invoked automatically when an object of same class is created,
+    object gets automatically initialized by the constructor
+	Types of constructor
+		1. Default constructor - A constructor which does not accept any parameter 
+		2. Parameterized constructor -  A constructor with one or more arguments 
+		3. Copy constructor 
+			- if object is getting initialized with another object belongs to same class using a special type of constructor 
+			- A copy constructor that takes a single argument, which is reference to another object of same type
+
+18) what are the default member functions are provided by compiler in a class?
+	1. Default constructor
+	2. Copy constructor
+	3. Assignment operator overloaded function
+	4. Destructor
+
+19) Shallow copy - an object is getting Initialized with another object with using an implicit copy constructor is called shallow copy
+		 - Shallow copy is not recommended for pointer data-members
+    Deep copy    - an object is getting initialized with another object using an explicit copy constructor is called as Deep copy
+
+20) what is destructor 
+	It is special member function of class which is invoked automatically to destroy the object when scope of object is completed
+
+21) what is mutable 
+	It is keyword, which makes particular data-member as non-constant in any type of function that is either const or non-const member function 
+
+22) Operator overloading
+	- an operator is not only works for pre-defined data-types, but also works for user-defined data-types is called operator overloading
+	- An operator can be overloaded by creating a special function called operator function, which describes the task
+    1. Overloaded operators only through member function 
+	1.   =  (Assignment)
+	2.  ( )  (Function call)
+	3.  [ ]  (Subscripting)
+	4.  ->  (arrow)
+    2. Operators that can be overloaded only by friend function
+	1. << (insertion)
+	2. >> (extraction)
+    3. Operators that can't be Overloaded
+	1.  .  (dot) member selection operator.
+	2.  .* (member selection through pointer to member operator. )
+	3.  sizeof
+	4.  : : (scope resolution)
+	5.  ? : (conditional operator)
+
+23) static data member
+	1. It is like global variable for its class, It is available to all objects of that class
+	2. Default Value of static data members is 0
+	3. Just one copy of this data members is created for entire class, since it is shared by all objects of that class
+	4. A static data-member should not be initialized with constructor
+	5. A static data-member is possible to access in 2 ways.
+		i) object and dot operator
+       	       ii) class name::
+	6. non-static data member must be initialized only through constructor
+	7. non-static data members must be accessed only through object and dot operator because it is a part of an object only
+
+24) static member function
+	1. A function within a class that does not require an instance of the class(object) to be called
+	1. A static member function can access only static members (functions or variables) of same class
+	2. A static member function can be involved by using the class name (instead of its objects) as follows:
+              class_name :: function_name;
+	3. Static member functions don't have an implicit "this" pointer as first parameter
+
+25) Inheritance
+	1. It is the process of acquiring the properties of one class into another class
+	2. Inheritance is always be there from top to down(base to derived)
+	3. But no inheritance from derived to base(bottom to top)
+	4. Any class private members should be accessible with in the same class member functions only
+	5. if derived class object contain base class private member, then it is possible to access only with base class member functions 
+	6. Base class members should be initialized with base class Constructor only. 
+	   derived class members should be initialized With derived class constructor only
+
+26) types of inheritance
+	1. Simple
+	2. Multilevel
+	3. Multiple
+	4. Hierarchical
+	5. Hybrid
+	6. Multipath
+
+27) Why constructors and destructors can't be inheritable
+	Because the scope of constructors and destructors are belongs to same class
+
+28) Function Overriding
+	- It occurs in inheritance when a derived class provides a new implementation for function that is already defined in base class
+	- The mechanism of providing same function name with same arguments in a base class as well as derived class 
+
+29) Function Binding
+	The process of converting variables and functions into addresses is known as binding.
+	Resolving a function call with it's proper function definition is called as function binding
+		1. Compile time function binding
+			- Also known as static binding.
+			- The function call is resolved at compile-time.
+			- Used for normal functions and function overloading
+		2. Runtime function binding (same as virtual function)
+			- Also known as dynamic binding.
+			- Happens at runtime, enabling polymorphism.
+			- Used when functions are marked as virtual in a base class.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+30) Virtual function
+	- It is used to enable runtime polymorphism, which means that correct function is called based on actual object type, not just the reference type.
+	- A pointer of base class type (Base*) is used to refer an object of derived class type (Derived) --> Base* obj=new Derived();	
+	- This is particularly useful in inheritance, where a derived class can override a base class function
+	- It is a function, which must be present in base class, which may be overridden in derived class and informs the compiler to perform runtime polymorphism
+
+31) Virtual table (vtable) 
+	- It's a mechanism that supports runtime polymorphism by enabling dynamic binding of function calls. 
+	- It's an internal lookup table, which virtual function should be called when using a base class pointer.
+	- When a class contains virtual functions, compiler generates a vtable for the class.
+	- Each object of the class stores a pointer to the vtable (known as a vptr).
+	- When a virtual function is called using a base class pointer, vtable is used to dynamically resolve function from derived class at runtime.
+
+31) pure virtual function
+	A virtual function that is declared 0 but not defined in a base class 
+		virtual <return-type> <function_name>(arg...) = 0;
+
+32) Abstract class
+	- If a class contains at least one pure virtual function 
+        - If a virtual function declared as pure, it must be redefined in each derived class, else compilation of program is unsuccessful
+	- A class having pure virtual function cannot be used to instantiate object of its own because of 0 address in virtual fun
+		B *p; ->valid
+		B b; -->error
+
+33) Virtual Destructor
+	- This is essential in polymorphism, when base class pointer holds dynamically created derived class object address
+
+34) Exception 
+	- It provide a way to handle runtime errors gracefully without crashing the program
+	- To handle such exception ,Exception Handling Mechanism is used
+		--> three keywords i.e. Try, throw, catch
+			1. try block:		Contains the code that might cause an error.
+			2. throw statement: 	Used to signal an exception.
+			3. catch block: 	Handles the exception and prevents the program from crashing
+
+35) Try - catch block
+	- C++ provides an inbuilt feature for handling exceptions using try and catch block.
+	- where the code that may cause an exception is placed inside the try block and the code that handles the exception is placed inside the catch block.
+
+36) Templates
+	It is a feature of programming language that allows functions and classes to operate with generic types (different data types)
+		1. function template
+	 	2. class template
+	Advantages:
+		1. Reduced source code
+ 		2. Less disk space needed to store the source files
+ 		3. Easy to debug the program
+ 		4. Good documentability
+ 
+37) Singleton object in C++
+	- It refers to design pattern that ensures a class has only one instance(object) and provides a global point of access to it.
+	- This pattern is useful when you need centralized control, such as managing configurations, logging, or database connections.
+	USES: 	Resource Management: Ensures a single access point for shared resources.
+		Memory Optimization: Avoids unnecessary object creation.
+
+38) Standard Template Library (STL)
+	- It is a collection of template-based classes and functions that provide efficient implementations for common data structures and algorithms such as lists, stacks, arrays, sorting, searching
+	- It is a generalized library we can use it with every data type without repeating code implementation 
+	Types:
+		1.Containers - used to store collections of elements efficiently.
+			1) Sequence Containers
+			vector – Dynamic array (fast access, efficient insertions at the end)
+			deque – Double-ended queue (fast insertion/removal from both ends)
+			list – Doubly linked list (efficient insertions/removals anywhere)
+
+			2) Associative Containers
+			set – Stores unique elements, sorted order
+			map – Key-value pair storage (sorted by key)
+			multiset – Like set, but allows duplicates
+			multimap – Like map, but allows duplicate keys
+
+			3) Unordered Containers
+			unordered set, unordered map – Same as set/map but unsorted, based on hash tables.
+
+		2.Algorithms - Predefined functions for operations like sorting and searching
+		3.Iterators  - Tools to traverse elements in containers
+		4.Functors(Functional objects)   - These are objects that act like functions and can be passed to STL algorithms
+
+39) Smart pointers
+	- It's part of Standard Library (STL) and used to manage dynamic memory automatically, ensuring proper memory deallocation.
+	- help to prevent memory leaks and eliminate the need for manual delete operations.
+    Types 
+	1.auto ptr
+	2.unique ptr
+	3.shared ptr
+	4.weak ptr
+
+
+
+
+
+
+
+

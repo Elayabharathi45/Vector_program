@@ -1,0 +1,212 @@
+1) malloc & calloc
+		malloc
+	1. allocates memory as a single block and returns base address immediately
+	2. Default values are Garbage values.
+	3. faster in execution.
+	4. malloc takes one argument.
+	Eg: int *p;
+	 	p = (int *)malloc(5*sizeof(int));
+ 
+		calloc
+	1. allocates memory as a multiple blocks and clears it and then returns base address.
+	2. Default values are 0's.
+	3. slower in execution.
+	4. calloc() takes 2 arguments.
+	Eg: int *p;
+       		p = (int *)calloc(5,sizeof(int));
+
+2) call by value & call by reference
+		call by value
+	1. While calling a function, we pass(copy) the values of variables to it
+	2. the original value is not modified
+	3. the values of the variables are passed using a simple technique
+	4. separate memory locations are created for actual and formal arguments	
+
+		call by reference
+	1. While calling a function, we pass the address of variables to the function
+	2. the original value is modified
+	3. Pointer variables are necessary to define to store the address values of variables
+	4. same memory space share for actual and formal arguments 
+
+3)		actual parameters
+	1. Actual parameters are values or references that are passed into function when it is called.
+	2. They also called arguments or parameter values.
+	3. Actual parameters provide input to the function.
+	4. They have scope that is limited to function call in which they are used.
+	5. Actual parameters can be expression that are evaluated before they passed into function.
+
+		formal parameters
+	1. They have default values, which are used if no value is passed in actual parameter when function is called
+	2. Formal parameters are also called function parameters or function arguments.
+	3. They are placeholders for values or references that will be passed into function.
+	4. Formal parameters have a scope that is limited to function in which they are defined.
+	5. They are used by function to perform operations and computations on values or references that are passed into function as actual parameters
+
+4) compiler & interpreter
+		compiler
+	1. it takes entire program in one go
+	2. it generates an intermediate machine code
+	3. it is best suited for production environment
+	4. C, C++, C#, Java
+
+		interpreter
+	1. it takes single line of code at a time
+	2. it never produces any intermediate machine code
+	3. it is best suited for software development environment
+	4. Python, PHP, Ruby
+
+5) functions & macros
+		functions
+	1. it is not for replacement
+	2. function arguments are specific
+	3. when fun is called internally stack memory is used
+	4. extra push and pop instructions are used lead to extra burden to CPU
+	5. fun arguments grouping is not necessary
+	6. fun body is designed once but possible to call function no. of times
+
+		macros
+	1. it is for replacement during preprocessor stage
+	2. macro arguments are generic
+	3. usage of stack is not required 
+	4. no separate push & pop instructions
+	5. macro arguments proper grouping is required
+	6. macrobody can designed in multiple lines & causes more code size
+
+6) structures & unions
+		structures 
+	1. memory is allocated separately to all memory of structures
+	2. data is secured because of individual memory allocation
+	3. initialization can be given to all structure members
+
+		unions
+	1. memory is allocated and same memory is shared by all members
+	2. there is data over-writing problem in union because of same memory
+	3. initialization can be given only to first member of union
+
+7) static memory & dynamic memory
+		static memory
+	1. it allocates memory before prog execution(load time memory)
+	2. it is fixed memory(it is not possible to increase or decrease the memory during runtime).
+	3. it is not possible to free the memory during runtime.
+	4. Faster in execution
+
+		dynamic memory
+	1. it allocates memory during prog execution(runtime memory)
+	2. it is flexible memory(it is possible to increase or decrease the memory).
+	3. it is possible to free the memory during runtime.
+	4. Slower in execution. 
+
+8) fprintf() & fwrite()
+		fprintf()
+	1. it used for text files
+	2. writes any data in form of characters
+	3. it takes more memory to write data
+
+		fwrite()
+	1. it is used for binary files
+	2. writes any data in form of binary form
+	3. it is used to save memory to write data
+
+9) 				Char array						char pointer
+	Size		1. Char arrays have a fixed size.		1. char pointers can point to strings of any size.
+	Initialization	2. Char arrays must be initialized at 		2. char pointers can be initialized later.
+			   the time of declaration.	
+	Assignment	3. Char arrays can be assigned to other		3. char pointers can be assigned to other char pointers or																arrays of the same size.		           memory address of string literal or dynamically allocated block of memory.
+
+10) 		KEYWORDS - 32 in C and But in C++ depends on standards
+	- Keywords are predefined words in programming language.
+	- Keywords in C language cannot be used as identifiers.
+	eg: int, float, char, double, etc,.
+
+		IDENTIFIER
+       	- Identifiers are user-defined variables that give a unique name to different entities in programming.
+ 	- Identifiers are the names given to variables, functions.
+	eg: int num, num-identifier
+
+11)		malloc()
+	1. It is a function
+	2. It computes size of object using sizeof operator
+	3. It is required to provide typecasting
+	4. It is not possible to initialize memory with given value
+	5. It is not possible to overload
+
+		free()
+	1. It is an operator
+	2. It computes size of object without using sizeof operator
+	3. It is not require to provide typecasting
+	4. It is possible to initialize memory with given value
+	5. It is possible to overload new operator
+
+12) 		Member function
+	1. it is possible to access Structure members directly
+	2. member functions are part of a structure or class
+	3. member function is called with dot(.) or arrow(->) operator
+
+		Non-Member function
+	1. it is possible to access structure members With dot(.) or arrow(->) operator.
+	2. it is not a part of a structure or class.
+	3. non-member function can be called directly.
+
+13) 		Structure in C
+	1. functions are not allowed inside the structure definition.
+	2. empty structure size is 0 bytes
+
+		Structure in C++
+	1. functions are allowed inside the structure definition.
+	2. empty structure size is 1 byte
+
+14)		Structure in C++
+	1. by default, public access Specifier to the members
+	2. by default public mode of Inheritance
+
+		Class in C++
+	1. by default, private access Specifier to the membersz
+	2. by default private mode of Inheritance
+
+15)		Member function
+	1. It is a part of a class
+	2. it is possible to access class members directly
+	3. the scope of member function belongs to same class
+	4. this pointer as an implicit parameter to a  member function
+	5. member functions should be called with object and dot operator
+	6. with which object, the member fun is called, that object data members can access directly
+
+		Friend function
+	1. it is not a part of a class but can be declared as a friend to a class
+	2. it is possible access members only With object and dot operator
+	3. the scope of friend function can be many no. of classes
+	4. there is no this pointer concept in friend function
+	5. friend functions should be called directly
+	6. which object data is required to access, that object is passed as an explicit parameter to a function.
+
+16)			Constructors
+	1. Constructors for initializing the object              
+	2. Constructor gets called automatically whenever an object gets created 
+	3. constructor names same as the class names
+	4. Addresses of constructors can't be referred
+
+			Member functions
+	1. But member functions for access / modify the object
+        2. But member functions have to be called explicitly
+	3. But member functions can be any identifier
+	4. But addresses of member functions can referred
+
+17)	Feature			Virtual Address						Physical Address
+	Definition	Address used by programs to access memory in system	Actual address of memory location in Hardware (RAM)
+	Purpose		Efficient memory use, process isolation			Hardware access to data and instructions
+	Management	Managed by OS and MMU using a page table		Managed by hardware (CPU and memory modules)
+	Direct Access	No (requires translation)				Yes (direct hardware access)
+
+18)	Memcopy and Memmove
+	used to copy blocks of (data)memory from one location to another, but the key difference lies in how they handle overlapping memory regions.
+ 		Memcpy									Memmove
+	Fast and optimized for non-overlapping memory areas.			Handles overlapping memory regions correctly by internally using a temporary buffer
+										 or adjusting copy direction.
+
+
+
+
+
+
+
+

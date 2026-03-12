@@ -1,0 +1,13 @@
+shell script
+
+shell is an application, it will wait for user input.
+shell scripting is a series of commands written in a plan text file.
+
+2 types of variables
+1.predefined  - pre-known to shell and written in caps letter
+2.userdefined - user need to implement
+
+ex: PATH, LINES, COLUMNS, LOGNAME
+
+* to access the variable content prefix the symbol $
+* 

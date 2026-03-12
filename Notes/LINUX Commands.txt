@@ -1,0 +1,18 @@
+1. ps - display all process under particular terminal
+2. ps -e - display all process running under background
+3. fd - it will get job from background to foreground
+4. fg 1 - 1st job id will be executed 
+5. kill - send signal process to stop it
+6. grep - search for patterns in text
+7. echo - print text to terminal
+8. ln -s - used to create soft link files
+9. ln - used t create hard link files
+10. clear - clears the previous screen
+11. tar - creates a tar archive, which is container for multiple files and directories
+12. mount - used to attach a file system to a specified directory 
+
+
+
+
+
+

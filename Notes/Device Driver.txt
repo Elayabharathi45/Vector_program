@@ -1,0 +1,91 @@
+1. Device driver
+	- A piece of software that allows the operating system to communicate with specific hardware like camera and displays
+	- Device drivers usually communicates with hardware by means of communications subsystem or computer bus to which hardware is connected
+	- Device drivers are OS specific and hardware-dependent. 
+	- Device driver acts as translator between hardware device and programs or OS that use it.	
+
+2- why device driver necessary 
+	device driver abstracts the hardware details, allowing the applications to interact with devices
+
+3. Linux Kernel Module
+	Def: Kernel modules are piece of code that can be loaded and unloaded into kernel upon demand (Device running)
+	- Linux support dynamic insertion and removal of code from kernel while the system is up and running
+	- The code what we add and remove at run time is called a kernel module
+	
+	Once kernel module(code) is loaded into Linux kernel, 
+	we can start using new features and functionalities exposed by kernel module without even restarting device
+
+4. Build Linux kernel module
+	we can link kernel modules to linux kernel in 2 ways
+	1.Static  Linux kernel Module  -->  link modules directly into the kernel 
+	2.Dynamic Linux Kernel Module (Loadable Kernel Module)  
+		--> build them as separate modules that can be loaded into the kernel at some other time
+
+5. Static Linux Kernel Module
+	- A driver(code) compiled directly into main kernel image, loaded at boot time and permanently present in memory
+	- It occupies the memory permanently during the runtime
+	
+6. Dynamic Linux Kernel Module - LKM
+	- A driver(code) compiled separately and loaded or unloaded into kernel at runtime on demand, without requiring a system reboot
+	- they are compiled and linked separately, resulting in .ko files
+	- These dynamic modules can be loaded and unloaded from kernel using user-space programs like insmod, modprobe or rmmod 
+
+7. User space vs Kernel space
+	User space
+	- Restricted(non privileged) mode
+	- It has limited access to system resources, must use system calls to request services from OS core(kernel) 
+	- System call handlers - part of kernel space, are responsible for executing system calls
+	
+	Kernel space
+	- privileged mode
+	- It has direct and complete access to all system's hardware and resources
+	- It refers to portion of OS memory(kernel) - core of OS, resides and executes
+
+8. kernel module(code) consits of
+	1.Header section
+	2.your code
+	3.Registration
+	4.Module description
+	
+9. kernel module - code section
+	while writing a kernel module code, we use 2 entry points
+	
+	1. Module Initialization Function (__init)
+		This function initializes the module and invoked during module insertion or system boot for statically linked modules		
+		In case of static modules, function will get called during boot time 
+		In case of dynamic modules, function will get called during module insertion
+					    and should be one module initialization entry point in module.
+		__init - defines code to be executed during module loading (insmod cmd executes)
+   
+	2. Module Cleanup Function (__exit)
+		This function is responsible for module cleanup tasks
+		It is called during module removal
+		__exit - defines code to be executed when module is unloaded (rmmod cmd executes)
+	
+10. __init Tag
+	__init tag signifies, code is specific to module initialization and discarded from memory after module initialization is complete 												and saves kernel memory
+	This tag is particularly useful for reducing kernel memory space, in dynamically loaded modules
+	
+11. static function
+	- using static is good practice to indicate the function is private to module and should not provide services or functionalities required by other modules
+	- Encapsulation and No Name Collisions
+	
+12. Global static
+	When global variable is declared static, it is visible only within that file, where it is defined
+    Local static
+	When local variable is declared static, it is visible only in that function, where it is defined
+    	
+13. Build a kernel module
+	dynamically loadable kernel module done in 2 ways
+	1. In tree module -  internal to Linux kernel tree
+			     modules which are already part of Linux kernel are called In tree modules
+	2. Out of tree module - external to Linux kernel source tree
+	                        the module (hello world), it is Out of tree module.
+	
+14. Kernel build "kbuild"
+	- Modules are built using “kbuild” which is the build system used by Linux kernel
+	- Doesn’t matter, it is static or dynamic module, modules are built using “kbuild”, that is kernel build
+
+
+
+

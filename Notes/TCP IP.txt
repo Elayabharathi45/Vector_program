@@ -1,0 +1,113 @@
+1.Host
+	- In TCP/IP networking, a host is any device connected to a network that can send and receive data.
+	- It can be a computer, embedded system, server, or IoT device.
+
+2.TCP/IP layers
+	1. Application Layer
+		- Provides network services to applications Eg. HTTP, FTP, SMTP, DNS, Telnet 
+		- Handles user interaction with the network (e.g., web browsing, emails, file transfers).
+		- Defines protocols like HTTP (Web), FTP (File Transfer), and SMTP (Email).
+	2. Transport Layer
+		- Ensures reliable communication between devices  
+		- Protocols: TCP (Transmission Control Protocol), UDP (User Datagram Protocol) 
+		- TCP: Reliable, connection-oriented protocol (used for web browsing, email, etc.).
+		- UDP: Faster, connectionless protocol (used for streaming, gaming).
+		- Implements port numbers for managing multiple connections (e.g., HTTP = Port 80).
+	3. Internet Layer
+		- Handles logical addressing and routing 	
+		- Protocols: IP (Internet Protocol), ICMP (Ping), ARP (Address Resolution Protocol) 
+		- Assigns IP addresses to devices for network communication.
+		- Routes data packets between different networks using routers.
+		- Uses ICMP for network diagnostics (like Ping commands).
+	4. Network Access Layer (Link Layer)
+		- Manages physical data transmission over networks 
+		- Protocols: Ethernet, Wi-Fi, PPP (Point-to-Point Protocol) 
+		- Defines how data is physically transmitted (e.g., Ethernet cables, Wi-Fi signals).
+		- Uses MAC addresses for device identification within a network.
+		- Converts data into frames for transmission over hardware.
+
+3.Address in each layer
+	1. Application Layer    --> Application specific address
+	2. Transport Layer      --> Port address
+	3. Internet Layer       --> Logical address(IP Address)
+	4. Network Access Layer --> Physical address(MAC address)
+
+4.Static IP
+	- Permanent IP address assigned to a device 	
+	- Does not change unless manually or user modified 
+	- Ideal for servers, remote access, and IoT devices 	
+	- Example: Web servers, CCTV systems, database servers
+	- Use Case: If you host a website or require remote access to a system, a static IP ensures a consistent connection.
+
+5.Dynamic IP
+	- Assigned by DHCP (Dynamic Host Configuration Protocol) 	
+	- Changes periodically when the device reconnects 
+	- Used for home networks, general web browsing, and mobile devices 
+	- Example: Your home Wi-Fi router, personal laptop, smartphones
+	- Use Case: Most home internet connections use dynamic IPs because they are cost-effective and reduce security risks.
+
+6.DHCP - Dynamic Host Configuration Protocol
+	- It is network protocol that enables a server to automatically assign IP address to computer from defined range of numbers configured for given network	
+
+7.IP or Logical address - Modifiable 
+	- Layer 2 address
+	- An IP (Internet Protocol) address is a unique numerical identifier assigned to each device connected to a network. 
+	- It enables devices to communicate over the internet or a local network by ensuring that data is sent and received correctly
+	- Helps devices interact with websites, servers, and other devices using TCP/IP protocols
+
+8.MAC address - Not Modifiable
+	- Layer 1 address
+	- A MAC (Media Access Control) address serves as a unique hardware identifier for network devices.
+	- Its primary purpose is to enable communication within a local network (LAN)
+
+9.Port address	
+	- A port address is a unique identifier used in networking to differentiate multiple services running on the same IP address. 
+	- Ports help route data to the correct application when a device sends or receives information over a network.
+	- Within that device, multiple applications (web server, FTP, SSH) need their own communication channels.
+	- The port number helps direct traffic to the correct service.
+
+10.Switch
+	- Connects multiple devices within a Local Area Network (LAN) and efficiently directs traffic. 
+	- Uses MAC addresses to forward data only to the intended recipient.
+	- Supports full-duplex communication (devices can send and receive data simultaneously).
+	- Commonly used in office or home networks for fast, efficient communication.
+	- Ex. Ethernet switch connecting computers and servers in a company network.
+
+11.Bridge
+	- Connects two network segments and filters traffic to improve efficiency. 
+	- Operates at Layer 2 (Data Link Layer) using MAC addresses.
+	- Reduces network congestion by forwarding only necessary traffic.
+	- Can connect wired and wireless networks seamlessly.
+	- Ex. Wi-Fi extenders use bridging to extend a network without changing IP structure.
+
+12.Router
+	- Routes data between different networks (LAN to WAN or LAN to LAN) using IP addresses. 
+	- Operates at Layer 3 (Network Layer) using IP routing tables.
+	- Can assign Dynamic IPs (DHCP) or allow Static IP settings.
+	- Uses NAT (Network Address Translation) for internet access.
+	- Ex. Home Wi-Fi routers direct traffic between your devices and the internet.
+
+13.Gateway
+	- Acts as a bridge between different protocols or networks.
+	- Translates data between incompatible network protocols (e.g., Ethernet to Bluetooth).
+	- Often used in IoT, industrial systems and cloud computing.
+	- Can combine functionalities of a router and firewall for security.
+	- Ex. A VoIP gateway converts analog voice signals into digital packets for internet calls.
+
+14.Socket
+	- It is method of IPC allow data to exchanged bt application, either on same host or on different host connected by the network
+	- It allows two devices to send and receive data over a network using TCP/IP or UDP protocols
+	- It has combined IP + Port number is known as socket
+	- 2 types
+		1.Stream socket 
+			-> Active socket
+			-> Passive socket
+		2.Datagram socket
+
+
+
+
+
+
+
+

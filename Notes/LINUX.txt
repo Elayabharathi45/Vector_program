@@ -1,0 +1,541 @@
+1-what is Linux?
+	Lovable Intellect Not Using XP.
+	it is open source operating system with various distributions such as Ubuntu, Fedora, and Debian
+	Android is powered by the Linux operating system.
+	1. Multi-user & Multi-tasking – Supports multiple users and processes simultaneously.
+	2. File System Hierarchy – Uses a structured directory system (/home, /bin, /usr, etc.).
+	3. Shell & Command Line Interface – Offers powerful scripting capabilities.
+	4. Security & Permissions – Implements strict user and file permissions.
+	5. Kernel-Based Architecture – The Linux kernel manages hardware interactions.
+
+2-Why Linux OS
+	- open source (source code is available for hardware)
+	- we can customized the source code for specific hardware implementation
+
+3-Why Ubuntu is better than Windows?
+	Ubuntu is made to be lightweight and efficient, so it runs faster, and apps work quicker.
+
+4-what is UBUNTU?
+	It is one of the operating systems available from the Linux distribution.
+
+5-What is Monolithic application?
+	Monolithic applications are single-tiered, which means multiple components are combined into one large application and run as single process
+
+	Micro Kernel:
+		It is a minimal OS that executes only important functions of OS. 
+		It only contains minimum number of features and functions that are required to implement OS. 
+		Example: QNX, Mac OS X, K42, etc.
+
+	Monolithic Kernel: 
+		It is an OS architecture that supports all basic features of computer components such as resource management, memory, file, etc. 
+		Example: Solaris, DOS, OpenVMS, Linux, etc. 
+
+
+6-D/W User space and Kernel space
+		User Space						Kernel Space
+	Non-privileged mode					Privileged mode
+	cannot access hardware or kernel memory directly	unrestricted access to hardware
+	Runs user applications and software			Runs OS kernel, device drivers, core management
+	errors affect only the individual application		errors can affect the whole system
+	Indirect access via system calls to the kernel		Direct hardware and memory access
+	
+
+7-D/W ubuntu and windows
+				UBUNTU							WINDOWS
+Software 	         - Open source software					Closed source software
+License 	         - Users do not need to purchase any license.		Users need to purchase a license to use Windows.
+Kernel-type	         - Monolithic						Hybrid 
+Resources 	         - Ubuntu uses fewer resources than Windows.		Windows uses more resources than Ubuntu.
+user interface(GUI)	 - Ubuntu unity, GNOME.					Windows Shell.
+Customization 	         - More customizable options.				Fewer customizable options.
+Privacy	                 - Much more privacy-focused than Windows 11.		Less privacy-focused than Ubuntu.
+Usability 	         - Not easy to use if compared to Windows.		Easy to learn and use
+Gaming                   - Not ideal for gaming.				Much better performance compared to Ubuntu
+Visual Assistant	 - None.						Cortana.
+
+8-what is OS?
+	- it is a software program where it manages the system resource and providing services to application and controls the peripherals.
+	- OS is interface b/w applications and hardware
+	- it is also known as resource(CPU, memory, IO devices) manager
+
+9-OS booting process
+	1. Power-On Self Test (POST)
+		When the computer is powered on, the BIOS (Basic Input/Output System) or UEFI (Unified Extensible Firmware Interface) firmware performs a POST to check the hardware components and ensure they are functioning correctly.
+		Tasks: Checks memory, CPU, storage devices, and other peripherals.
+	2. Bootloader Initialization
+		After the POST, the BIOS/UEFI looks for the bootloader in the bootable storage device (e.g. hard drive. SSD)
+		Tasks: Loads the bootloader into memory. The bootloader is responsible for loading the OS kernel.
+	3. Bootloader Execution
+		The bootloader (e.g. GRUB for Linux & Windows Boot Manager for Windows)takes control and loads the OS kernel into memory Tasks Displays a boot menu (if multiple OS's are installed), Loads the selected OS kernel and passes control to it.
+	4. Kernel Initialization
+		The OS kerel initializes and takes control of the system.
+		Tasks: Sets up memory management.
+			Initializes hardware components and device drivers.
+			Starts essential kernel services.
+	5. Init Process
+		The kernel starts the initial process, often referred to as init (or systemd in modern Linux distributions).
+		Tasks: Initializes system services and daemons.
+			Sets up the user environment.
+	6. User Space Initialization
+		The init process starts user-space programs and services.
+		Tasks: Starts login managers and graphical interfaces.
+			Loads user-specific configurations.
+	7. Login Prompt
+		The system presents a login prompt or graphical login screen.
+		Tasks: Allows the user to log in and start using the system.
+
+10- OS booting process in Linux?
+	1.BIOS - Basic Input Output System
+		1. BIOS first performs some integrity checks of the HDD(Hard Disc Drive).
+	2.MBR - Master Boot Record 
+		1. MBR responsible for loading and executing the GRUB boot loader.
+		2. The MBR also contains information about GRUB, or LILO in very old systems.
+	3.GRUB - Grand Unified Bootloader
+		1. The GRUB splash screen is often the first thing you see when you boot your computer.
+		2. It has a simple menu where you can select some options. 
+		3. If you have multiple kernel images installed, you can select the one you want your system to boot with.
+		4. By default, the latest kernel image is selected.
+	4.Kernel - Core of OS
+		1. It has complete control over everything in your system.
+		2. Then it executes the init program, which is always the first program to be executed.
+		3. You can confirm this with its process id (PID), which should always be 1.
+	5.Init - 
+		1. At this point, your system executes run level programs.
+		2. the role of init is to create processes from script stored in the file
+		3. At one point it would look for an init file, usually found at /etc/inittab to decide t he Linux run level.
+	6.Runlevel program
+		1. Run levels are numbered from zero to six.
+		2. Run levels determine which programs can execute after the OS boots up.
+
+10- OS booting process in Linux?
+	1.Power On
+		This signifies the start of the process, when the computer is powered on.
+	2.BIOS (Basic Input/Output System) & ROM (Read-Only Memory) 
+		BIOS is a firmware program stored in the ROM chip.
+		It performs a Power-On Self Test (POST) to check the basic functionality of the system hardware and then loads the bootloader.
+	3.Boot Loader 
+		The bootloader is a small program that loads Linux kernel from the hard disk into memory.
+	4.Master Boot Record (MBR) 
+		The MBR is the first sector of the hard disk and contains the boot loader code and a partition table.
+	5.Kernel 
+		kernel is the core of the Linux operating system. 
+		It manages hardware resources (like memory and CPU), provides security, and allows applications to interact with the hardware.
+	6.User Space (Applications) 
+		This refers to the software programs that users interact with, such as web browsers, word processors, and games. 
+		These programs run in user space, which is isolated from the kernel for security reasons.
+
+10- What is Bootloader
+	- It is a small program(software) that runs immediately when an embedded system powers on.
+	- It initializes hardware, loads main firmware and also RTOS into memory and starts execution.
+	- Resides in protected memory section (flash memory)
+
+11-		Foreground Process                                             		 Background Process
+	Processes that require a user to start them                           Processes that are run independently of a user are referred
+    or to interact with them are called foreground processes.		      to as background  processes.
+ 	Programs and commands run as foreground processes
+    by default.
+
+12-Daemeon Process
+	1. Daemons is a background process that runs independently of user control and performs system tasks like scheduling and sshd (secure shell access).
+	2. It's usually started when system starts, and they run until the system stops.
+	2. A daemon process performs system services and is available at all times to more than one task or user.
+	3. Daemon processes are started by the root user or root shell and can be stopped only by the root user.
+
+13-Process Attributes
+	1.saturation Time (or) Wait time - process waiting for CPU
+	2.Response Time			 - first response from CPU after Process Ready
+	3.Turnaround Time		 - time gap b/w process submission to process completion
+	4.Throughput Time		 - no. of jobs completed per unit of time
+
+14-State of Processes
+	1. Ready state	    - It needs CPU for a ready state
+	2. Running state    - process execute by the CPU
+	3. Wait state       - process enter to wait state(user input)
+	4. Delay state      - sleep(10)
+	5. Suspended state  - process suspend by receive signal-kill signal
+
+D/W library function and system call
+
+15-What is the command line interpreter?
+	1. It's a program that receives commands from a user and executes them on behalf of the operating system
+	2. It acts as an interface between the user and OS kernel, translating commands into system calls. 
+	3. In Linux, shells like Bash, Zsh, and Dash are commonly used command interpreters.
+	4. Command interpreter is also known as 'shell'.
+
+16-shell
+	1. A shell in Linux is a command-line interface that allows users to interact with the operating system.
+	2. It acts as a bridge between user and system, interpreting commands and executing them.
+		1. Bash (Bourne Again Shell) – Default for most Linux distributions, powerful and widely used.
+		2. Zsh (Z Shell) – An enhanced shell with better auto-completion and customization.
+		3. Sh (Bourne Shell) – The original Unix shell, lightweight and efficient.
+		4. Fish (Friendly Interactive Shell) – Designed for user-friendly command-line interactions.
+	
+17-Orphan process
+	1. In parent and child process combination, if parent is terminated first then child becomes orphan.
+	2. for all child process, Init or Systemd acts as parent.
+
+18-Zombie process5
+	1. In parent and child process combination, if child is terminated first but status of child is not collected by
+     parent then child becomes zombie.
+   SOLUTION:
+	1. use wait() and waitpid() in parent process
+	2. use exit() in child
+
+19-D/W wait() and waitpid()
+
+20-waitpid 3rd argument
+	1. WNOHANG
+	2. WUNTRACED
+	3. WCONTINUED
+
+21-EXEC family
+	1. Current process image(a.out) is replace with new process image.
+	2. total no. of process created are minimized, by using execl family.
+
+22-D/W exit() and _exit()
+
+23-what is vfork() process
+	it creates a child process and blocks parent.
+   vfork() behaviour is undefined if
+	1. if there is no exit/_exit in a process.
+	2. if the function returns where vfork is called.
+	3. modify the data by any process.
+   else
+	segmentation fault occurs.
+
+24-Signal Handling
+	1. signal are called as software interrupt.
+	2. it is a notification to the process that some event has occurred.
+
+25-Raise() - send a signal to caller
+
+26-Pause() - wait for signal
+
+27-Signal() - to change the action of the signal
+
+28-Sigaction() - this system call is used to change action taken by the process to a specific signal.
+
+29-Resource Management
+	1. every process once started execution it can access the system resource.
+	2. System resource like memory (stack, data,...) CPU memory
+	3. OS will provide a limit on each resource that is called soft limit.
+	4. user can change soft limit to hard limit.
+
+30-Epoch time
+	01-01-1970 ,during that era Unix entered into market, hence that time is a reference point.
+
+31-File Management
+	1. File system is a collection of files and directories in proper order.
+	2. Linux OS will support different types of file system types.
+	3. Basic unit of allocating space in secondary storage in file system is logical block
+	4. The size of logical block may very OS to OS based on file system type.
+	5. in general logical block size is 512/1024/2048/4096.
+	6. In Linux for a file system 4 blocks are reserved.(each block size is 1024, total 4 block-4096)
+   In filesystem 4 blocks are created once OS are installed.
+	1. Boot block  - have information about OS booting process.
+	2. Super block - have information related to file system.
+		- sizeof of inode table
+		- size of logical block
+	3. Inode block - information related to type of file, file permission, site of file.
+	4. Data block  - Majority of space reserved for data block, where your files and directories are stored.
+
+32-umask - octal format
+	when new files are created file permission are allocated based on umask value.
+
+33-chmod
+	1. to add or remove file permission
+	2. chmod (u,g,o)(+,-)(r,w,x) filename.c
+	
+34-Link files
+	(i) - Hard link		       - these files are created using ln command
+	(ii)- Soft link(symbolic link) - these files are created using ln -s command
+
+35-stat() and lstat()	- get a file status
+	stat() - link file information can't get instead normal file information for both file are same
+	lstst()- normal file and link file information we get.
+
+36-atime - access time   --> cat cmd
+   mtime - modification  --> append
+   ctime - status change --> chmod
+
+37-File handling using system call
+	- When a process created by default three buffers are attached, they are stdout, stdin, stderr
+	- they are called file descriptor or magic numbers.(0,1,2)
+
+38-Record Locking
+	- 3 types of lock - write lock, read lock, unlock
+	- write lock is exclusive lock
+	- read lock is shared lock
+
+39-How to apply unlock
+	- when process terminate automatically locks are released.
+	- by using close(fd)
+
+40-Critical Section of code
+	- A section of code that accesses shared resources and must be executed without interference to avoid race conditions.
+	- It is a part of process, where a common resource is accessed ,critical section of code execution must be atomic(one at a time).
+
+41-IPC - Inter Process Communication
+	- It is a mechanism that requires the use of resources like a memory that is shared between processes or threads.
+	- With IPC, OS allows different processes to communicate with each other. 
+	- It is simply used for exchanging data between multiple threads in one or more programs or processes.
+	- IPC is essential for multi-tasking environments, where processes need to share information efficiently.
+	1.Independent Process
+	2.Co-operating Process
+   i)PIPE - size:65536
+	- It is a unidirectional data channel that can be used for inter process communication.
+	- fd[0] refers to read end of pipe, fd[1] refers to write end of file.
+	- Data written to write end of pipe is buffered by kernel until it is read from read end of pipe.
+	- pipe(2) 2nd arg - causes write system can fail once pipe full.
+  ii)FIFO - size:0 
+	- one way communication
+	-  it is a special file similar to pipe, expect that it is accessed as a part of file system.
+	- open for multi process for read & write when process exchange data via FIFO, kernel pass all data internally
+ 	  without write to filesystem.
+	- filesystem serves as a reference point.
+	- FIFO must be opened on both end before data can passed.
+	- FIFO block until other end is opened also.
+  iii)Message queues
+	- In kernel spaces, msg queues are identified with key value.
+	- it is connectionless, kernel not maintaining any information that how many process right now are using message queues.
+	- Msg queues are identified with key values and return identifier.
+	- Communication bt processes using msg queues are slower.
+   iV)Shared memory
+	- It is the fastest IPC mechanism 
+	- It is an efficient IPC mechanism that allows multiple processes to access and modify the same memory segment
+	- It is asynchronous IPC.
+
+42-Semaphores
+	- It is a synchronization mechanism used in OS and embedded systems to control access to shared resources in Multi-thread or Multi-process system
+	- It uses counter to manage no of threads that can access a particular resource, allow multiple threads to work parallel 
+	- Multiple process can share a same resource using semaphores.
+	- It is a special object known by the kernel, uses for process synchronization.
+	- It is like integer variable where it is under the kernel.
+
+43-                     Binary Semaphore                                   	Counting Semaphore
+	- in binary semaphore, value of semaphore is 0/1           - in counting semaphore, value of semaphore value is >=1
+	- binary semaphore (similar to mutex) only allows one	   - A counting semaphore allows a fixed number
+	  process to access a resource				     of threads to access a resource
+
+44-Deadlock Situation
+	- A situation where set of processes are blocked, as each process is holding resources and waits to acquire resources held by another process.
+	- In OS, deadlock situation occurs when process enters into waiting state because the resource is wait by
+	  another waiting process, which in turn it is waiting for another resource held by another waiting process.
+
+45-Thread 
+	- Thread is a path of execution in process composed of program counter, thread id, stack and set of registers within the process. 
+	- Each thread has its own: 
+		Program counter, Registers, Stack and State.
+	- Multiple threads running in a process share: 
+		Address space, Heap, Static data, Code segments, File descriptors, Global variables, Child processes, Pending alarms, Signals and signal handlers. 
+	- It is part of process, one process have multiple threads is scheduled independently.
+	- Threads are sometimes called lightweight processes because they have their own stack but can access shared data. 
+	- It allow processes to execute multiple tasks concurrently, making efficient use of system resources
+	- Data Transfer b/w thread no need of any IPC mechanism as like process communication.
+	- Thread creation is faster than process creation.
+	- Context switch time between threads is less than context switch b/w process.
+
+46-Mutex
+	- A type of mutual exclusion lock that ensures only one thread can access a shared resource at a time
+	- It is uses to prevent race conditions by allow one thread to lock resource and others to wait until its unlocked
+	- Used to protect shared resources from being simultaneously accessed by multiple threads
+	- A mutex allows only one thread to access a resource at a time.
+	- If a second thread tries to lock the mutex while another thread has it locked, it will be put to sleep until the mutex is unlocked
+
+47-Difference b/w thread & process
+
+48-Difference b/w semaphore & Mutex
+	
+49-Functions of OS 
+	- Memory Management.
+	- Process Management/CPU Scheduling.
+	- Device Management.
+	- File Management.
+	- Security.
+	- Accounting.
+	- Error detection etc.
+
+50-Types of OS
+	- Batch Operating System
+	- Multi-Programming System
+	- Multi-Processing System
+	- Multi-Tasking Operating System
+	- Time-Sharing Operating System
+	- Distributed Operating System
+	- Network Operating System
+	- Real-Time Operating System
+	- General Purpose Operating System
+
+51-What is Kernel
+	- Kernel is central component of an OS that manages operations of computer and hardware.
+	- It basically manages operations of memory and CPU time. 
+	- It is core component of operating system.
+	- Kernel acts as a bridge between applications and data processing performed at hardware level
+     using inter-process communication and system calls. 
+	- Services like process, Memory, file Management, Interrupt and IPC mechanism
+
+52-What is Multitasking OS
+	A multitasking operating system is a type of system software that enables a computer
+    to execute multiple tasks or processes simultaneously.
+
+53-What is Multithreading in OS
+	- In an operating system to enable more than one user at a time without requiring multiple copies 
+    of the program running on the computer.
+	- Multithreading can also handle multiple requests from the same user.
+
+54-Context Switching
+	1. Context switching is a mechanism to store and restore the state or context(current) of CPU 
+	   in process control block so that a process execution can be resumed from same point at a later time.
+	2. It's a process where CPU switches from one task (process or thread) to another, allowing multitasking
+	2. During this, context switcher enables multiple processes to share a single CPU
+	3. Context Switching is an essential part of multitasking operating system features.
+	4. Multiprocessing is not possible without context switching.
+
+55-CPU scheduling?
+	- It is a process that is used to improve efficiency by utilizing maximum CPU and providing minimum waiting time to tasks. 
+	- CPU Scheduling is a process that allows one process to use the CPU while another process is delayed.
+    (in standby) due to unavailability of any resources such as I/O, thus making full use of CPU.
+	- The purpose of CPU Scheduling is to make the system more efficient and faster 
+    Examples of scheduling algorithms are:
+	1. First Come First Serve (FCFS)
+	2. Shortest Job First (SJF)
+	3. Round-Robin Scheduling
+	4. Priority-based scheduling 
+	5. Priority Scheduling
+
+56- Preemptive Scheduling:
+	- The OS allocates the resources to a process for a fixed amount of time. 
+	- This switching happens because CPU may give other processes priority and substitute the currently active process for higher priority process.
+	- During resource allocation, the process switches from running state to ready state or from waiting state to ready state.
+    Non- Preemptive Scheduling:
+	- The resource cant be taken from a process until the process completes execution. 
+	- The switching of resources occurs when the running process terminates and moves to a waiting state.
+	- This ensures that time-critical tasks can be executed promptly. 
+
+57- Scheduling Policies
+    1. First Come First Serve(FCFS) - (Non preemptive)
+	- Tasks are execute on First come first serve basics (Queue)
+	- Poor in performance as average wait time is high
+
+    2. Shortest Job First - (Non preemptive)
+	- First approach to minimize waiting time
+	- The processor should knows in advance how much time processor will take
+
+    3. Priority Scheduling - (Non preemptive & preemptive)
+	- Each task is assigned a priority level
+	- Task with highest priority will be given opportunity to use CPU
+	- In preemptive version of algorithm, running task can be interrupted if a higher priority task ready to run state
+	- In Non preemptive scheduling, once task is started it can't be interrupted by higher priority task
+	- Task with same priority are executed as first come first serve or Round robin scheduling 
+
+    4. Shortest Remaining time - (preemptive)
+	- (Earliest deadline first)
+	- It is dynamic-priority driven algorithm, in which highest priority is assigned to request that has earliest deadline 
+	- A higher priority tasks always preempts lower priority tasks
+
+    5. Round-Robin Scheduling - (preemptive)
+	- There are no priority assigned to tasks
+	- Each task is put into running state for fixed predefined time, this time is commonly referred as time-slice(quantum)
+	- A task cannot run longer than the slice time
+	-If a task is not completed by end of dedicated time-slice, it is interrupted, so next task from queue can run in following time slice
+	-No starvation, no guarantee to meet deadlines 
+
+58-Race Condition
+	- Race conditions occur when multiple processes or threads access shared resources simultaneously, leading to unpredictable behavior.
+	- This is a common issue in embedded systems, especially when dealing with interrupts or multitasking
+
+59-What is starvation and aging in OS?
+	When we use Priority Scheduling or Shortest Job First Scheduling, Starvation can happen, This algorithm is mostly used in CPU schedulers
+
+	Starvation: 
+	1. A problem that occurs when process not able to get required resources it needs for progress with its execution for long period of time. 
+	2. low priority processes get blocked and high priority processes proceed towards completion because of which low priority processes suffer from lack of resources. 
+
+	Aging: 
+	1. It is a technique that is used to overcome the situation or problem of starvation. 
+	2. It simply increases the priority of processes that wait in the system for resources for a long period of time.
+	3. It is considered the best technique to resolve problem of starvation it adds an aging factor to the priority of each and every request by various processes for resources. 
+	4. It also ensures that low-level queue jobs or processes complete their execution.
+
+60-How do i link program with OS
+	- file links the OS to program
+	- file is defined in header file stdio.h
+	- It contains information about
+		1.file being used
+		2.its current size
+		3.its location in memory
+
+
+
+Memory Management
+1. Memory partitioning 
+	It is a technique used in operating systems to divide memory into sections for efficient allocation and management
+		1. Fixed Partitioning
+			Predefined memory blocks allocated at system startup.
+			Processes are assigned to partitions based on their size.
+			Limitation: Can lead to internal fragmentation if a process doesn’t use the full partition.
+		2. Dynamic Partitioning
+			Memory is divided based on the process's exact requirements.
+			Reduces internal fragmentation but may lead to external fragmentation over time.
+			Solution: Compaction—rearranging memory to create larger free blocks.
+		3. Paging
+			Divides memory into fixed-size pages mapped to frames in physical memory.
+			Eliminates fragmentation issues and simplifies allocation.
+			Used in virtual memory systems.
+		4. Segmentation
+			It is generally a memory management technique that divides processes into modules and parts of different sizes.
+			These parts and modules are known as segments that can be allocated to process. 
+			Can be combined with paging for segmented paging.
+			Memory is divided into segments like code, data, stack and heap helping in organizing memory more efficiently
+
+2. Paging 
+	- When process ready for execution it is first loaded into virtual memory where the process divided into small units called pages
+	- Pages are loaded from virtual memory to physical memory during execution
+	- RAM is divided into small units called frames
+
+3. Demand page
+	- In virtual memory, it is type of swapping, pages of data are not copied from disk to RAM until they needed.
+	- pages of a process are loaded into RAM only when they are accessed by the CPU, rather than all pages being loaded at once.
+	- This is achieved through the Memory Management Unit (MMU) and operating system
+
+4. Page fault
+	- It's an exception or error that occurs when running program attempts to access memory page (fixed-size block of memory) that is not currently loaded in physical memory(RAM).
+	- A invalid page fault or page fault error occurs when OS cannot find data in virtual memory.
+
+5. Dirty page
+	- If page has been modified, OS must preserve contents of that page so that it can be accessed at a later time.
+
+6. Page Tables
+	- Maintain the mapping between virtual and physical addresses.
+	- Multi-Level Page Tables: Organize address translations more efficiently, reducing memory overhead.
+
+7. Partition
+	dividing the memory space into distinct regions or blocks, each with its own characteristics and access permissions
+	1. Fixed  
+	2. Dynamic(Variable)
+
+8. Internal fragmentation 
+	- It refers to wasted memory within a memory block that has been allocated to a process or task
+	- If 1 process allocates 40MB memory but it uses only 4MB, other memory are wasted so it is called internal fragmentation 
+
+9. External fragmentation
+	- As processes are loaded, unloaded, and reloaded, memory is dynamically allocated and freed. 
+	- This process can create "holes" or gaps in memory between allocated blocks
+
+10. Compaction
+	- It is a technique to overcome external fragmentation
+	- It is the process in which free spaces are collected in the large memory chunk to make some space available for processes
+
+11. Thrashing 
+	- It refers to situation where system spends majority of its time of swapping data between RAM and secondary storage(usually the disk), instead of executing actual processes.
+
+12. Virtual Memory
+	- It acts as temporary storage that can be used along with RAM for computer processes. 
+	- It is simply space where greater number of programs can be stored by themselves in the form of pages. 
+	- It enables us to increase the use of physical memory by using a disk and also allows us to have memory protection.
+	- It can be managed in two common ways by OS i.e., paging and segmentation. 
+
+13. Purpose of virtual memory
+ 	Virtual memory allows execution of processes larger than physical memory by using disk space as an extension of RAM.
+
+

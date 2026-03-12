@@ -1,0 +1,184 @@
+1 - why C preferred for embedded?
+	- simple and portable
+	- easy to write, read, debug
+	- utilize less memory, rich library 
+	- middle level programming
+	- procedure oriented language
+
+2 - what are tokens in C?
+	The individual elements of a program are called Tokens. There are 6 types of tokens available in C
+	- Identifiers
+	- Keywords
+	- Constants
+	- Operators
+	- Special Characters
+	- Strings
+
+3 - what is nested structure
+	when a data member of one structure is referred by data member of another function, then it is called nested structures
+
+4 - Types of Input
+	1) compile time - data are given to variable within a program itself
+	2) runtime input - data is given to a variable during program execution time
+	3) load time 	- data is given to a variable along with its executable file during load time
+
+5 - Typecasting
+	- It is a temporary conversion of one form of datatype to another form of datatype
+	1) Implicit typecasting - done by compiler where lower datatype is converted into higher datatype
+	2) Explicit typecasting  - user has to done this
+
+6 - What is compiler
+	A compiler is a special program that translates a programming language's source code into machine code(binary format)
+	1) Native compiler - host and target are same
+	2) Cross compiler  - host and target are different
+		HOST	- where program implemented
+		TARGET	- where program executed
+
+7 - Compilation stages
+8 - Types of error
+
+9 - Types of pointers
+	- Void Pointer		- generic pointer, used to store any type of address, if want to access any address data, we have to do proper typecasting.
+	- NULL Pointer		- It is a pointer, which is  pointing to 0 address(points to nothing)
+	- Wild Pointer		- It is uninitialized pointer that contains random memory address that may point to invalid memory location
+	- Dangling Pointer 	- Even after freeing the memory also, still pointer Points to same memory location 
+	- Far Pointer		- It can store the address of any memory location in the RAM
+	- Near Pointer		- near pointer can only store till first 64kB addresses
+	- Huge Pointer		- A pointer that can point to any segment in the memory -->size is 4 bytes	
+
+10 - what is Volatile keyword in C
+	- it is a qualifier that is used by the programmer when they declare a variable in source code
+	- It is used to inform the compiler that variable value can be changed at any time without any task given by the source code, outside the scope of current code execution
+
+11 - Actual arguments : Arguments that are present in the function call.
+     Formal arguments : Arguments that are present in the function definition.
+
+12 - getc() reads a character from any input and returns corresponding integer value on success. If it fails, it returns EOF
+     getchar() reads from standard input, making it equivalent to getc(stdin)
+     getch() reads single character from keyboard. It doesn’t use any buffer, so data is not displayed on screen
+     getche() reads a character from the keyboard uses buffers and displays it immediately on output screen, without waiting for enter key
+
+13 - toupper() - function used to convert lowercase into uppercase
+     tolower() - function used to convert uppercase into lowercase 
+
+14 - what is an linkage
+	identifier declared in different scope or same scope more than once, can be made refer to same object or function by a process called linkage.
+	1) No linkage :  The identifiers should be used with in the block/function
+	2) Internal linkage : The identifiers should be used with in the same file itself
+	3) External linkage : The identifiers can be used in the same file as well as in other files also, which are belongs to same program
+
+15 - array     - It is collection of similar data items which are Stored in contagious memory locations
+     pointer   - It is variable, which holds address of another variable and it is used to access/modify data indirectly
+     recursion - A function which is called by itself is called recursion 
+     string    - It is collection of characters, which are stored in Contiguous memory location and it enclosed with double quotes
+		 and terminated with null character. 
+
+16 - structure - collection of different data items which are stored in contagious memory location
+     union     - collection of different data items which are stored in same memory
+     enumerator- it is a collection of named integer constants 
+     typedef   - it is a keyword which is used to provide existing data types with a new alias name
+
+17 - function 
+	- It is a sub program in a main program to perform, a specific task
+	- When a function is called then there is memory allocation is done in stack and that is called push operation,
+	  once if function task is over, then it will de-allocates the memory is called pop operation.
+	- For every C programming execution, 8MB memory is allocated in a stack.
+	- function instructions are executing from code section
+	- functions local variables and function return addresses memory is allocated in a stack section. 
+
+18 - what is memory leak
+	it can be defined as situation where programmer allocates dynamic memory to program but fails to free or delete
+	the used memory after completion of code
+
+19 - #pragma directive 
+	- It is a preprocessor directive used to turn on or off certain features
+		1.#pragma startup - allow us to specify functions called upon program startup
+		2.#pragma exit    - allow us to specify functions called upon program exit
+		3.#pragma warn    - tells the computer to suppress any warning or not
+
+20 - Command line arguments
+	1. all the arguments are treated as strings in command line arguments
+	2. By default a string itself represent as base address
+	3. syntactical representation of string is const char* 
+	4. argv is pointer (char**) , which points a char array of pointer base address
+
+21 - call back function: 
+	- if a function passes as an argument to another function, where it is collected through function pointer to call it back, that function is called call back function
+
+22 - malloc - Allocates single block of memory of specified size and returns a pointer to the beginning of the block
+     calloc - Allocates multiple blocks of memory, initializes all bytes to zero, and returns a pointer to the allocated space
+     realloc - Changes the size of allocated memory block and may move the memory block to a new location, updating the pointer
+
+23 - fprintf and fscanf
+	- these functions in C are used for formatted input and output to files
+	- They are similar to printf and scanf but operate on files instead of standard input and output
+	- fprintf - it may takes more memory to write data
+
+24 - fread and fwrite
+	- these functions in C are used for binary input and output
+	- They allow you to read from and write to files in binary mode, which is useful for handling data
+	- fwrite - it is used to save the memory to write data
+
+25 - Stream 
+	It is a kind of buffer which acts as an interface between program and files are data flow
+
+26 - Function pointer
+	a pointer that stores the address of function is called a function pointer or a pointer to a function.
+	Function pointers can be useful when you want to call a function dynamically.
+
+27 - Static variable
+	- Using static is good practice to indicate that the function is private to particular module and should not provide functionalities required by other modules
+	static variable data can be retained throughout the program in SRAM location that are not reallocated during program execution
+	1. Global static
+		if declared outside function, it means it is known to all functions of program
+	2. Local static
+		if declared inside function, it means it is known only within the function
+
+Data Structures:
+1. Data structures
+	- It is fundamental components in programming that help organize and store data efficiently.
+	- They define how data is arranged, accessed, and manipulated within an application
+
+2. Types
+	1. Linear DS
+		1.Array
+		2.Structures
+		3.Linked list
+			1.Single Linked List
+			2.Double
+			3.Circular
+		4.Stack
+		5.Queue
+	2. Non-linear DS
+		1.Trees
+		2.Graph
+		3.Heap
+		4.Hash Table
+	
+3. Node
+       It is a memory region where it consists of DATA & Link field
+		1.Data field - Stores the value or information
+		2.Link field(pointer) - A reference to the next node or connected nodes 	
+	
+4. add middle
+	- How to add link to a middle of list?
+	     we have a information field, we can add nodes with help of that
+
+5. Traversal method
+	1. Depth-First Traversal (DFS)
+		* In-order Traversal (LNR): Visit the left subtree, then the root node, and finally the right subtree
+		* Pre-order Traversal (NLR): Visit the root node first, then the left subtree, and finally the right subtree
+		* Post-order Traversal (LRN): Visit the left subtree first, then the right subtree, and finally the root node	
+	2. Breadth-First Traversal (BFS)
+		* Level-order Traversal: Visit the nodes level by level, starting from the root node and moving down to the leaves
+
+6. Binary Search Tree (BST)
+	- a specialized type of binary tree where each node has a value, and values in left subtree are always smaller than node's value, while values in right subtree are always larger
+
+
+
+
+
+
+
+https://github.com/Vishruth-S/S3_DS_LAB/blob/685256bb91a0544e9ec1f78162a25aa9dcf665eb/!Lab%20Cycle%20Programs/CYCLE_1/Factorial%20with%20recursion.c

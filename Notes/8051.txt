@@ -1,0 +1,54 @@
+8051
+
+1. Architectural feature
+	- totally 40 pins
+	- 4K bytes ROM
+	- 128 bytes of RAM
+	- 16 bit address bus
+	- 8 bit data bus
+	- two 16-bit timers/counters
+	- Full duplex UART serial peripheral 
+
+2. ports 
+	- Totally 4 I/O ports
+	- three I/O ports have dual functionalities 
+	- port 0 -- lower byte of address bus & 8 bit data bus
+	- port 2 -- Higher byte of address bus
+
+3. Address Bus
+	- Used to identify memory locations where data is stored or retrieved
+	- Typically 16-bit wide, allowing it to address 64 KB (2¹⁶) of memory space
+	- Unidirectional (flows from the CPU to memory/peripherals)
+	- Used for selecting program memory (code space) and data memory (RAM, external memory)
+
+4. Data Bus
+	- Transfers actual data between the CPU and memory or I/O devices
+	- 8-bit wide (since 8051 is an 8-bit microcontroller)
+	- Bidirectional (data can flow to and from memory/peripherals)
+	- Used for sending instructions, retrieving stored values, reading sensor data, etc
+
+5. Interrupts in 8051
+	- External interrupts 
+	- Timer Interrupts
+	- Serial port interrupts
+	- RESET
+
+6. Types of memory in 8051
+	- Internal RAM
+	- Special function Register
+	- Program Memory 
+	- External Data Memory 
+
+7. Bit addressing 
+	- Allows manipulation of individual bits within a register or memory.
+	- Bit-addressable registers and specific RAM locations.
+	- 8051 has 128 directly bit-addressable locations in Internal RAM (20H to 2FH).
+	- E.g. Setting or clearing a specific bit in a register.
+		P1 ^= (1 << 3);  // Toggle bit 3 of Port 1
+
+8. Byte Addressing 
+	- Accesses and manipulates entire 8-bit bytes at once.
+	- General-purpose registers, RAM, and external memory.
+	- E.g. Reading or writing a full byte in memory.
+		unsigned char data = P1; // Read full byte from Port 1
+

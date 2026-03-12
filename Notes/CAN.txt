@@ -1,0 +1,155 @@
+1 - Basic points 
+	- Controlled Area Network (CAN) is Message-Based Protocol.
+	- A protocol, developed by Robert Bosch, 1983
+	- It is serial communication protocol
+	- Multi Master Model
+	- low cost distributed communication
+	- priority - msg are transfer based on priority
+	- Efficient error detection & management
+	- It is Asynchronous Half Duplex serial communication - msg are transfer & receive not simultaneously
+	- Highest baud rate 1Mbps
+	- 2 bus line 
+		1) CANH - 2.5 to 3.5V
+		2) CANL - 1.5 to 2.5V
+
+2 - what is Network
+	the program present in one device is able to send data to program present in another device, then 
+    these two devices are called connected together that is called network.
+
+3 - CAN node 
+	it consists of CAN controller & CAN transceiver 
+	1) CAN controller  - All CAN activities are handled
+	2) CAN transceiver - converts single ended voltage to differential ended voltage for CANH & CANL
+
+4 - CAN features and Characteristics 
+	- highest baud rate is 1 Megabits Per Sec
+	- CSMA/CA - Carrier Sense Multiple Access / Collision Avoidance
+	- msg priority - Arbitration
+	- Dominant Bit (logic 0) - Difference volt is >0.9 to 2V
+	  Recessive Bit(logic 1) - Difference volt is 0V to 0.5V
+	- CAN uses Physical layer & Datalink layer in OSI Model
+	- CAN uses twisted pair connection to reduce noise and sequential flow of data
+	- 2 twisted wires with 2 termination resistors of 120 ohm
+	- termination resistors reduces the flow of data continuously in Bidirectional way to avoid signal reflection and EMI(Electro Magnetic Induction) that cause
+		Data corruption
+		Noise
+		Communication errors
+	- Terminator resistor must be equal to the impedance value generated because of signal(V/I).
+	- In CAN usually 100-120 ohm resistance used at the end of the differential cable.
+
+5 - What does a CAN terminator do?
+	CAN Terminator can be used to terminate a high-speed CAN where CAN cable or CAN node at the end does not have internal termination.
+
+6 - what if 2 node with same id send msg
+	- If two nodes try to send a message with the same ID at the same time, arbitration will not work.
+	- Instead, one of the transmitting nodes will detect that his message is distorted outside of the arbitration field.
+
+7 - Connection of CAN nodes
+	- Theoretically unlimited depends on the specific implementation and length of CAN bus. (ISO898 - 32 nodes can connected)
+	- In general, standard CAN bus allows upto 127 nodes, while extended CAN bus may support upto 1023 nodes.	
+	- A maximum of 63 slaves nodes are connected to a CAN bus in addition to the CAN bus Master.
+
+8 - Types of Frame in CAN
+	1)data frame	 - send data to other receiver node
+	2)remote frame	 - request transmission of data from another node
+	3)error frame	 - when a node detects an error in msg & causes all other node in network to send an error frame
+	4)overload frame - it transmitted by node that becomes too busy, used to provide extra delay between msg
+
+DATA FRAME
+1. Start of Frame(SOF)
+	- A single dominant(0) bit that signals start of CAN message
+	- Purpose: Synchronizes all nodes on bus
+	- Why it matters: Ensures that all devices on network recognize beginning of new msg
+
+2.Message Identifier
+	- An 11-bit field that identifies the message
+	- Also determines message priority - lower values=higher values
+
+3.Remote Transmission Request(RTR)
+	- Dominant (0) - data frame transmission for msg
+	- Recessive(1) - Remote frame request for data
+
+4.Data Length Code(DLC)
+	- Defines how many data bytes(0-8) are in frame
+	- valid values: 0 to 8
+
+5.Data field
+	- Contains actual message data (upto 8 bytes)
+	- Used for sensor data, commands and diagnostics
+
+6.CRC (Cyclic Redundancy Check) 
+	- A 15-bit CRC sequence is used for error detection in data and remote frames. 
+	- The transmitter calculates this CRC value based on the data being sent, and it's included in the frame's CRC field.
+	- Receivers then recalculate the CRC from the received frame and compare it with the received CRC value
+
+7.Acknowledgment bit (ACK bit) 
+	- It is a critical part of the frame that ensures successful transmission and reception. 
+	- The transmitting node sends a recessive bit (1) in the ACK slot. 
+	- If any receiving nodes successfully receive and validate the frame, they overwrite the recessive bit with a dominant bit (0) to acknowledge their receipt.
+
+8.End of Frame (EOF)
+	- Marks end of valid CAN frame 
+	- Consists of 7 recessive bits (1s)
+
+9.Intermission (ITM)
+	- A 3-bit idle period after EOF
+	- Allows bus recovery before next message
+	- Ensures proper bus arbitration
+--------------------XXX-------------------XXX-----------------
+
+9 - types of error
+	1)Bit error   - transmitter node read back its bit from CAN line, when it not get read bits as transmitted, it stops further transmission and sends an error frame on CAN line
+	2)Stuff error - more than 5 consecutive bits in CAN frame b/w SOF to CRC field is stuff error, it can be active error or passive error
+	3)CRC error   - if transmitter node CRC is not equal to receiver node CRC it signals as CRC error
+	4)Ack error   - transmitter send ack as 1 & receiver node is 0, during readback if transmitter bit receives 1 then its ack error
+	5)Form error  - fixed bits like CRC delimiter, ACK delimiter, EOF if its detect corrupted at receiver node it signals Form error
+
+10 - Bit stuffing
+	- coding for bit stuffing requires that five consecutive bits of same level to be followed by complimenting bit level
+	- six consecutive bits of same level causes bit stuffing error
+
+11 - error confinement mechanism
+	- In CAN network, any node sends error continuously it will disconnect from CAN network after the threshold limit
+	- for limit every node has 2 error counters 
+		1) transmit error counter  } ---> on these counter nodes are of three error state 
+		2) receive error counter   }
+			  i) active error state   TEC<=127 & REC<=127
+			 ii) passive error state  TEC>127  & REC>127
+			iii) bus off state        TEC>255
+
+12 - nominal bit time
+	time taken to transmit or receive a single bit is called nominal bit time
+
+13 - Why CAN-BUS uses NRZ(Non return to zero) encoding instead of RZ?
+	NRZ encoding uses to change Controller digital signal into BUS level.
+
+14 - What are the CAN Network Topology?
+	- Star Topology - Each node is connected to a central hub or switch.
+	- Loop Topology - a network configuration where each node (device) is connected to exactly two other nodes
+	- Bus Topology - All nodes (devices) are connected to a single central communication line (the bus).
+	- Combination.
+
+15 - Hard synchronization
+	All the receivers align themselves to this falling edge (recessive to dominant) after the period of bus idle(SOF). 
+     soft synchronization
+	After subsequent falling edges on the CAN frame are used to re-synchronize the nodes on bus and it is called soft synchronization.
+
+16 - Why CAN is asynchronous communication?
+	Data transmission is not synced with any external clock signal. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

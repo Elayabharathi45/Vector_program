@@ -1,0 +1,20 @@
+Good morning/afternoon
+
+I am Elayabharathi originally from Tiruppur and I'm currently residing in Chennai for the past 2 years
+
+I have completed my schooling at BMHSS erode	
+Then I have moved to Coimbatore for my higher studies in Bachelor degree of Electrical and Electronics Engineering in
+ Anna University Regional Campus Coimbatore completed with a CGPA of 8.51
+
+Then I like to choose my carrier in Embedded domain So I have joined Vector India institute 
+there I have learned C, C++, Linux & Arm controllers
+
+Then I have joined in Lennox India Technology Centre Chennai 
+where I have 1.4 years of experience as embedded software tester in HVAC domain
+there I have worked in different control boards project by testing their performance
+
+Then I moved to Eubix technologies Chennai
+where I have done task like user-space application development for iMX6 processor by Yocto framework and SPC5775E Controller by RTEMS RTOS 
+
+One of my key strength is my regular approach to learning and problem-solving
+I look forward to leveraging my expertise and contributing to innovative projects that push the boundaries of technology
